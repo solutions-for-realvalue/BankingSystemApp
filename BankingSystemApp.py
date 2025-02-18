@@ -37,15 +37,18 @@ class BankAccount:
         if amount > 0:
             self.__balance += amount
         else:
-            print("Invalid amount!")
+            print("Invalid amount! Please enter a positive value.")
 
     # method for withdrawals that subtracts the specified amount from the account
     # balance if sufficient funds are available
     def withdraw(self, amount):
-        if amount <= self.__balance:
-            self.__balance -= amount
+        if amount <= 0:
+            print("Invalid amount! Please enter a positive value.")
+        elif amount > self.__balance:
+            print(f"Insufficient funds! You can withdraw up to ${self.__balance:.2f}.")
         else:
-            print("Insufficient funds!")
+            self.__balance -= amount
+            print(f"Withdrawal successful! New balance: ${self.__balance:.2f}")
 
 
 # child class
