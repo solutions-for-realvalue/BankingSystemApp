@@ -37,7 +37,6 @@ class BankAccount:
     def get_balance(self):
         return self.__balance
     
-
     # ************************************************************************************
     # method calculates the balance (takes time as input parameter to calculate
     #  the balance after applying compound interest)
@@ -45,7 +44,6 @@ class BankAccount:
     def calculate_balance(self, time):
         self.__balance = self.__balance * ((1 + BankAccount.INTEREST_RATE) ** time)
         return self.__balance
-
 
     # ************************************************************************************
     # method adds the specified amount to the account balance
@@ -63,7 +61,6 @@ class BankAccount:
         else:
             print("Invalid amount! Please enter a positive value.")
             return False
-
 
     # ************************************************************************************
     # method for withdrawals that subtracts the specified amount from the account
@@ -88,7 +85,6 @@ class BankAccount:
             print(f"Withdrawal successful! New balance: ${self.__balance:.2f}")
             return True
 
-
     # ************************************************************************************
     # method to return Bank Account details
     # ************************************************************************************
@@ -99,7 +95,6 @@ class BankAccount:
             f"Account Holder: {self.__account_holder}\n"
             f"Balance: ${self.__balance:.2f}"
         )
-
 
 # ****************************************************************************************
 # child class CheckingAccount for the parent BankAccount class
@@ -123,6 +118,7 @@ class CheckingAccount(BankAccount):
         if amount <= 0:
             print("Invalid amount! Please enter a positive value.")
             return False
+        # Get the current balance of the account
         current_balance = self.get_balance()
         # If the amount is within the available balance, proceed normally.
         if amount <= current_balance:
@@ -134,6 +130,7 @@ class CheckingAccount(BankAccount):
             self._BankAccount__balance = current_balance - amount
             print(f"Withdrawal successful with overdraft! New balance: ${self.get_balance():.2f}")
             return True
+        # Print an error message if the withdrawal exceeds the overdraft limit.
         else:
             print(f"Error: Withdrawal exceeds overdraft limit. You can withdraw up to ${current_balance + self.overdraft_limit:.2f}.")
             return False
@@ -143,12 +140,24 @@ class CheckingAccount(BankAccount):
     # Checking accounts do not earn interest, instead a monthly maintenance fee is subtracted.
     # ************************************************************************************
     def calculate_balance(self, time):
-        fee = 10 * time  # $10 maintenance fee per month
+        # calculate monthly maintenance fee
+        fee = 10 * time
+        # subtract the fee from the balance
         self._BankAccount__balance = self.get_balance() - fee
+        # return the updated balance
         return self.get_balance()
 
-
-
+    # ************************************************************************************
+    # method to return Checking Account details (override parent class method)
+    # ************************************************************************************
+    def __str__(self):
+        return (
+            f"Account Type: Checking Account\n"
+            f"Account Number: {self.get_account_number()}\n"
+            f"Account Holder: {self.get_account_holder()}\n"
+            f"Balance: ${self.get_balance():.2f}\n"
+            f"Overdraft Limit: ${self.overdraft_limit:.2f}"
+        )
 
 # ****************************************************************************************
 # child class SavingsAccount for the parent BankAccount class
