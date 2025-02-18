@@ -279,7 +279,10 @@ def main():
     checking1.withdraw(300)
     print(checking1, "\n")
 
-
+    # Calculate CheckingAccount balance after 2 months (maintenance fee deduction)
+    print("Calculating balance for Checking Account after 2 months")
+    checking1.calculate_balance(2)
+    print(checking1, "\n")
 
 
 if __name__ == "__main__":
