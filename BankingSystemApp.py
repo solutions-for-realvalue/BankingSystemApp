@@ -40,15 +40,18 @@ class BankAccount:
     
     # ************************************************************************************
     # Method to calculate the balance after applying compound interest.
-    # 'time' is the input number period (months)
-    #  the balance after applying compound interest)
+    # 'time' is the input number periods over which the interest is applied.
     # ************************************************************************************
     def calculate_balance(self, time):
+        # Validate that time is a non-negative number
+        if not isinstance(time, (int, float)) or time < 0:
+            print("Invalid time period! Please enter a non-negative number.")
+            return self.get_balance()
         self.__balance = self.__balance * ((1 + BankAccount.INTEREST_RATE) ** time)
         return self.__balance
 
     # ************************************************************************************
-    # method adds the specified amount to the account balance
+    # Method adds the specified amount to the account balance
     # ************************************************************************************
     def deposit(self, amount):
         # check if the amount is a valid number
@@ -65,7 +68,7 @@ class BankAccount:
             return False
 
     # ************************************************************************************
-    # method for withdrawals that subtracts the specified amount from the account
+    # Method for withdrawals that subtracts the specified amount from the account
     # balance if sufficient funds are available
     # ************************************************************************************
     def withdraw(self, amount):
@@ -88,7 +91,7 @@ class BankAccount:
             return True
 
     # ************************************************************************************
-    # method to return Bank Account details
+    # Method to return Bank Account details
     # ************************************************************************************
     def __str__(self):
         return (
@@ -99,7 +102,7 @@ class BankAccount:
         )
 
 # ****************************************************************************************
-# child class CheckingAccount for the parent BankAccount class
+# Child class CheckingAccount for the parent BankAccount class
 # ****************************************************************************************
 class CheckingAccount(BankAccount):
     def __init__(self, account_number, account_holder, balance):
