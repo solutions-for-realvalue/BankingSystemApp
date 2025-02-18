@@ -240,3 +240,17 @@ class SavingsAccount(BankAccount):
             f"Minimum Balance: ${self.minimum_balance:.2f}"
         )
 
+# ****************************************************************************************
+# Test script to validate functionality
+# ****************************************************************************************
+def main():
+    # Print the title for the test script
+    print("=== Banking System Test Script ===\n")
+    
+    # Print the current interest rate for a bank account
+    print("Current Bank Account Interest Rate:", f"{BankAccount.get_interest_rate() * 100:.2f}%\n")
+    
+    
+
+if __name__ == "__main__":
+    main()
