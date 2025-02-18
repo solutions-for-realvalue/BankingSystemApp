@@ -165,12 +165,39 @@ class CheckingAccount(BankAccount):
 class SavingsAccount(BankAccount):
     # inherits all attributes and methods from the parent BankAccount class
     def __init__(self, account_number, account_holder, balance):
+        # Inherit all attributes from BankAccount
         super().__init__(account_number, account_holder, balance)
-        # additional attributes for the SavingsAccount class
+        # initialize minimum balance
         self.minimum_balance = 100
-        # self.interest_rate = 0.04
+        # initialize withdrawal count
+        self.withdraw_count = 0
+        
+    # ************************************************************************************
+    # Override the withdraw method to ensure withdrawals do not reduce the balance
+    # below the minimum balance. Increments the withdrawal count on success.
+    # ************************************************************************************
+    def withdraw(self, amount):
+        # check if the amount is a valid number
+        if not isinstance(amount, (int, float)):
+            print("Invalid input! Please enter a valid number.")
+            return False
+        # check if the amount is positive
+        if amount <= 0:
+            print("Invalid amount! Please enter a positive value.")
+            return False
+        # Get the current balance of the account
+        current_balance = self.get_balance()
+        # Check if the withdrawal would reduce the balance below the minimum
+        if current_balance - amount < self.minimum_balance:
+            print(f"Error: Withdrawal would reduce balance below the minimum of ${self.minimum_balance:.2f}.")
+            return False
+        # Allow the withdrawal if the balance remains above the minimum
+        self._BankAccount__balance = current_balance - amount
+        self.withdraw_count += 1
+        print(f"Withdrawal successful! New balance: ${self.get_balance():.2f}")
+        return True
 
-
+    
 
 # ****************************************************************************************
 # test script to validate functionality
