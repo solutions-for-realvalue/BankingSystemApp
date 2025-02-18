@@ -18,3 +18,11 @@
 
 ---
 
+## 🌟 Overview  
+
+This **Banking System Application** is a Python-based simulation of a banking environment with different types of accounts. It leverages **Object-Oriented Programming (OOP)** principles such as **inheritance, encapsulation, method overriding, and data validation** to model realistic banking operations.
+
+The system consists of a **parent class `BankAccount`** and two **child classes `CheckingAccount` and `SavingsAccount`** that introduce additional features such as overdraft limits, minimum balance requirements, and special interest calculations.
+
+---
+
