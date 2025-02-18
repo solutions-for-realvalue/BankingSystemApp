@@ -284,6 +284,15 @@ def main():
     checking1.calculate_balance(2)
     print(checking1, "\n")
 
+    # Perform Withdrawals on SavingsAccount
+    print("Withdrawing $100,000 from Savings Account")
+    savings1.withdraw(100000)
+    print(savings1, "\n")
+    
+    print("Attempting to withdraw an amount that would reduce Savings Account below minimum balance")
+    savings1.withdraw(450000)
+    print(savings1, "\n")
+
 
 if __name__ == "__main__":
     main()
