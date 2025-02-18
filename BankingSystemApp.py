@@ -197,7 +197,22 @@ class SavingsAccount(BankAccount):
         print(f"Withdrawal successful! New balance: ${self.get_balance():.2f}")
         return True
 
-    
+    # ************************************************************************************
+    # Override the calculate_balance method for savings accounts.
+    # Applies interest using the parent's method and adds a $10 reward if no withdrawals
+    # have occurred since the last calculation. Resets the withdrawal count afterward.
+    # ************************************************************************************
+    def calculate_balance(self, time):
+        # Apply compound interest using the parent's calculation.
+        new_balance = super().calculate_balance(time)
+        # Add monthly reward if no withdrawals were made.
+        if self.withdraw_count == 0:
+            new_balance += 10
+        self._BankAccount__balance = new_balance
+        print(f"Balance after interest and reward: ${self.get_balance():.2f}")
+        # Reset the withdrawal counter after calculating the balance.
+        self.withdraw_count = 0
+        return self.get_balance()
 
 # ****************************************************************************************
 # test script to validate functionality
