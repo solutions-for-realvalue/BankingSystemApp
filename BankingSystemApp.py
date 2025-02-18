@@ -213,6 +213,10 @@ class SavingsAccount(BankAccount):
     # have occurred since the last calculation. Resets the withdrawal count afterward.
     # ************************************************************************************
     def calculate_balance(self, time):
+        # Validate that time is a non-negative number
+        if not isinstance(time, (int, float)) or time < 0:
+            print("Invalid time period! Please enter a non-negative number.")
+            return self.get_balance()
         # Apply compound interest using the parent's calculation.
         new_balance = super().calculate_balance(time)
         # Add monthly reward if no withdrawals were made.
