@@ -34,7 +34,10 @@ class BankAccount:
 
     # method adds the specified amount to the account balance
     def deposit(self, amount):
-        self.__balance += amount
+        if amount > 0:
+            self.__balance += amount
+        else:
+            print("Invalid amount!")
 
     # method for withdrawals that subtracts the specified amount from the account
     # balance if sufficient funds are available
@@ -74,7 +77,25 @@ time_period = 12
 print(f"The account balance after {time_period} years is: {account.calculate_balance(time_period)}")
 
 
+print("-----------------------------")
 
+# Create a BankAccount instance with an initial balance of $1000
+account = BankAccount("123456", "John Doe", 1000.00)
 
+# Test Case 1: Withdraw a valid amount (within balance)
+print(f"Initial Balance: ${account.get_balance():.2f}")
+account.withdraw(200)  # Withdraw $200
+print(f"Balance after withdrawing $200: ${account.get_balance():.2f}")
+
+# Test Case 2: Withdraw an amount larger than the balance
+account.withdraw(900)  # Try to withdraw $900, should print "Insufficient funds!"
+print(f"Balance after attempting to withdraw $900: ${account.get_balance():.2f}")
+
+# Test Case 3: Withdraw exactly the remaining balance
+account.withdraw(800)  # Withdraw exactly what's left
+print(f"Balance after withdrawing all funds: ${account.get_balance():.2f}")
+
+# Test Case 4: Withdraw from an empty account
+account.withdraw(50)  # Try to withdraw from zero balance
 
 
