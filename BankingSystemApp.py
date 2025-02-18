@@ -256,6 +256,18 @@ def main():
     print("Initial Checking Account Details:",checking1, "\n")
     print("Initial Savings Account Details:",savings1, "\n")
 
+    # Perform Deposits
+    print("Depositing $100,000 into Checking Account...")
+    checking1.deposit(100000)
+    print(checking1, "\n")
+    
+    print("Depositing $50,000 into Savings Account...")
+    savings1.deposit(50000)
+    print(savings1, "\n")
+
+
+
+
     
 
 if __name__ == "__main__":
