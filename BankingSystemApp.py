@@ -54,12 +54,15 @@ class BankAccount:
         # check if the amount is a valid number
         if not isinstance(amount, (int, float)):
             print("Invalid input! Please enter a valid number.")
+            return False
         # check if the amount is positive
         if amount > 0:
             self.__balance += amount
+            return True
         # print error message if the amount is not positive
         else:
             print("Invalid amount! Please enter a positive value.")
+            return False
 
 
     # ************************************************************************************
@@ -70,16 +73,20 @@ class BankAccount:
         # check if the amount is a valid number
         if not isinstance(amount, (int, float)):
             print("Invalid input! Please enter a valid number.")
+            return False
         # check if the amount is positive
         if amount <= 0:
             print("Invalid amount! Please enter a positive value.")
+            return False
         # check if the amount exceeds the balance
         elif amount > self.__balance:
             print(f"Insufficient funds! You can withdraw up to ${self.__balance:.2f}.")
+            return False
         # subtract the amount from the balance if sufficient funds are available
         else:
             self.__balance -= amount
             print(f"Withdrawal successful! New balance: ${self.__balance:.2f}")
+            return True
 
 
     # ************************************************************************************
@@ -138,8 +145,10 @@ account = BankAccount("123456", "John Doe", 1000.00)
 
 # Test Case 1: Withdraw a valid amount (within balance)
 print(f"Initial Balance: ${account.get_balance():.2f}")
+account.withdraw(-200)  # Withdraw $200
 account.withdraw(200)  # Withdraw $200
 print(f"Balance after withdrawing $200: ${account.get_balance():.2f}")
+account.withdraw("two hundred")  # Withdraw $200
 
 # Test Case 2: Withdraw an amount larger than the balance
 account.withdraw(900)  # Try to withdraw $900, should print "Insufficient funds!"
