@@ -1,23 +1,33 @@
 # ****************************************************************************************
-# Banking System Application that consist of parent class
-# Banking System with two child classes CheckingAccount and SavingsAccount
+# Banking System Application with parent class BankAccount
+# Banking System wihas two child classes CheckingAccount and SavingsAccount
+# ****************************************************************************************
 class BankAccount:
+
+    # ************************************************************************************
     # class constant for the default interest rate (2% expressed as decimal)
+    # ************************************************************************************
     INTEREST_RATE = 0.02
 
+    # ************************************************************************************
     # static method to return the default interest rate
+    # ************************************************************************************
     @staticmethod
     def get_interest_rate():
         return BankAccount.INTEREST_RATE
 
+    # ************************************************************************************
     # constructor to initialize the account number, account holder, and balance
+    # ************************************************************************************
     def __init__(self, account_number, account_holder, balance):
         # protected attributes using name mangling
         self.__account_number = account_number
         self.__account_holder = account_holder
         self.__balance = balance
 
+    # ************************************************************************************
     # accessor methods for the encapsulated attributes
+    # ************************************************************************************
     def get_account_number(self):
         return self.__account_number
     
@@ -27,21 +37,30 @@ class BankAccount:
     def get_balance(self):
         return self.__balance
     
+
+    # ************************************************************************************
     # method calculates the balance (takes time as input parameter to calculate
     #  the balance after applying compound interest)
+    # ************************************************************************************
     def calculate_balance(self, time):
         self.__balance = self.__balance * ((1 + BankAccount.INTEREST_RATE) ** time)
         return self.__balance
 
+
+    # ************************************************************************************
     # method adds the specified amount to the account balance
+    # ************************************************************************************
     def deposit(self, amount):
         if amount > 0:
             self.__balance += amount
         else:
             print("Invalid amount! Please enter a positive value.")
 
+
+    # ************************************************************************************
     # method for withdrawals that subtracts the specified amount from the account
     # balance if sufficient funds are available
+    # ************************************************************************************
     def withdraw(self, amount):
         if amount <= 0:
             print("Invalid amount! Please enter a positive value.")
@@ -51,7 +70,9 @@ class BankAccount:
             self.__balance -= amount
             print(f"Withdrawal successful! New balance: ${self.__balance:.2f}")
 
+    # ************************************************************************************
     # method to return Bank Account details
+    # ************************************************************************************
     def __str__(self):
         return (
             f"Account Number: {self.__account_number}\n"
@@ -62,6 +83,7 @@ class BankAccount:
 
 # ****************************************************************************************
 # child class
+# ****************************************************************************************
 class CheckingAccount(BankAccount):
     def __init__(self, account_number, account_holder, balance):
         super().__init__(account_number, account_holder, balance)
@@ -69,15 +91,18 @@ class CheckingAccount(BankAccount):
 
 
 # ****************************************************************************************
-# child class 
+# child class
+# ****************************************************************************************
 class SavingsAccount(BankAccount):
     def __init__(self, account_number, account_holder, balance):
         super().__init__(account_number, account_holder, balance)
         self.interest_rate = 0.04
 
 
+
 # ****************************************************************************************
 # test script to validate functionality
+# ****************************************************************************************
 interest_rate = BankAccount.get_interest_rate()
 print(f"Default interest rate: {interest_rate:.2%}")
 
