@@ -170,7 +170,7 @@ class CheckingAccount(BankAccount):
         )
 
 # ****************************************************************************************
-# child class SavingsAccount for the parent BankAccount class
+# Child class SavingsAccount for the parent BankAccount class
 # ****************************************************************************************
 class SavingsAccount(BankAccount):
     # inherits all attributes and methods from the parent BankAccount class
@@ -179,7 +179,7 @@ class SavingsAccount(BankAccount):
         super().__init__(account_number, account_holder, balance)
         # initialize minimum balance
         self.minimum_balance = 100
-        # initialize withdrawal count
+        # initialize private counter for withdrawal count
         self.withdraw_count = 0
         
     # ************************************************************************************
