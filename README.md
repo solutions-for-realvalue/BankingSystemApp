@@ -77,3 +77,43 @@ python banking_system.py
 
 ---
 
+## 🎯 Usage  
+
+### 💰 Creating Accounts  
+
+```python
+# Creating a Checking Account and a Savings Account
+checking_acc = CheckingAccount("001", "Alice", 2000)
+savings_acc = SavingsAccount("002", "Bob", 5000)
+```
+
+### 📥 Depositing Funds  
+
+```python
+checking_acc.deposit(500)  # Adds $500 to checking account
+savings_acc.deposit(1000)  # Adds $1000 to savings account
+```
+
+### 📤 Withdrawing Funds  
+
+```python
+checking_acc.withdraw(2500)  # Allows overdraft up to $500
+savings_acc.withdraw(200)  # Ensures balance does not fall below $100
+```
+
+### 🏦 Calculating Balance After Time Passes  
+
+```python
+checking_acc.calculate_balance(6)  # Applies maintenance fees over 6 months
+savings_acc.calculate_balance(6)  # Applies interest and rewards (if eligible)
+```
+
+### 📜 Printing Account Details  
+
+```python
+print(checking_acc)
+print(savings_acc)
+```
+
+---
+
