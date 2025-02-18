@@ -52,3 +52,28 @@ The system consists of a **parent class `BankAccount`** and two **child classes 
 
 ---
 
+## 🛠️ Technologies Used  
+
+- **Python 3.x**  
+- **OOP Concepts**: Inheritance, Method Overriding, Encapsulation  
+- **Custom Validations & Error Handling**  
+
+---
+
+## 📦 Getting Started  
+
+### 1️⃣ Clone the Repository  
+
+```bash
+git clone https://github.com/solutions-for-realvalue/VoiceRecipeSearchSystem.git
+cd BankingSystemApplication
+```
+
+### 2️⃣ Run the Script  
+
+```bash
+python banking_system.py
+```
+
+---
+
