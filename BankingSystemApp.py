@@ -104,18 +104,27 @@ class BankAccount:
 # child class CheckingAccount
 # ****************************************************************************************
 class CheckingAccount(BankAccount):
+    # inherits all attributes and methods from the parent BankAccount class
     def __init__(self, account_number, account_holder, balance):
         super().__init__(account_number, account_holder, balance)
+        # additional attributes for the CheckingAccount class
         self.overdraft_limit = 500
+
+    # method to override the withdraw method in the parent class
+    def withdraw(self, amount):
+        
 
 
 # ****************************************************************************************
 # child class SavingsAccount
 # ****************************************************************************************
 class SavingsAccount(BankAccount):
+    # inherits all attributes and methods from the parent BankAccount class
     def __init__(self, account_number, account_holder, balance):
         super().__init__(account_number, account_holder, balance)
-        self.interest_rate = 0.04
+        # additional attributes for the SavingsAccount class
+        self.minimum_balance = 100
+        # self.interest_rate = 0.04
 
 
 
