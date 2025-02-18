@@ -26,3 +26,29 @@ The system consists of a **parent class `BankAccount`** and two **child classes 
 
 ---
 
+## 🚀 Features  
+
+✅ **BankAccount Class:**  
+- Interest rate management  
+- Deposits and withdrawals with validation  
+- Balance calculations  
+
+✅ **CheckingAccount Class:**  
+- Overdraft protection up to $500  
+- Monthly maintenance fee deduction  
+- No interest calculations  
+
+✅ **SavingsAccount Class:**  
+- Minimum balance requirement ($100)  
+- Monthly reward for no withdrawals  
+- Interest applied to balance  
+
+✅ **Robust Data Validation:**  
+- Prevents negative deposits  
+- Ensures withdrawals do not exceed limits  
+
+✅ **Readable Output:**  
+- `__str__()` method for detailed account representation  
+
+---
+
