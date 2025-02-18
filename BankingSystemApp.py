@@ -11,7 +11,7 @@ class BankAccount:
 
     # ************************************************************************************
     # Static method to return the default interest rate
-    # This method is invokable without instantiating the class.
+    # This method is invokable without instantiating the class
     # ************************************************************************************
     @staticmethod
     def get_interest_rate():
@@ -40,7 +40,7 @@ class BankAccount:
     
     # ************************************************************************************
     # Method to calculate the balance after applying compound interest.
-    # 'time' is the input number periods over which the interest is applied.
+    # 'time' is the input number periods over which the interest is applied
     # ************************************************************************************
     def calculate_balance(self, time):
         # Validate that time is a non-negative number
@@ -125,24 +125,24 @@ class CheckingAccount(BankAccount):
             return False
         # Get the current balance of the account
         current_balance = self.get_balance()
-        # If the amount is within the available balance, proceed normally.
+        # If the amount is within the available balance, proceed normally
         if amount <= current_balance:
             self._BankAccount__balance -= amount
             print(f"Withdrawal successful! New balance: ${self.get_balance():.2f}")
             return True
-        # Otherwise, allow an overdraft if within the limit.
+        # Otherwise, allow an overdraft if within the limit
         elif (amount - current_balance) <= self.overdraft_limit:
             self._BankAccount__balance = current_balance - amount
             print(f"Withdrawal successful with overdraft! New balance: ${self.get_balance():.2f}")
             return True
-        # Print an error message if the withdrawal exceeds the overdraft limit.
+        # Print an error message if the withdrawal exceeds the overdraft limit
         else:
             print(f"Error: Withdrawal exceeds overdraft limit. You can withdraw up to ${current_balance + self.overdraft_limit:.2f}.")
             return False
 
     # ************************************************************************************
-    # Override the calculate_balance method for checking accounts.
-    # Checking accounts do not earn interest, instead a monthly maintenance fee is subtracted.
+    # Override the calculate_balance method for checking accounts
+    # Checking accounts do not earn interest, instead a monthly maintenance fee is subtracted
     # ************************************************************************************
     def calculate_balance(self, time):
         # Validate that time is a non-negative number
@@ -184,7 +184,7 @@ class SavingsAccount(BankAccount):
         
     # ************************************************************************************
     # Override the withdraw method to ensure withdrawals do not reduce the balance
-    # below the minimum balance. Increments the withdrawal count on success.
+    # below the minimum balance. Increments the withdrawal count on success
     # ************************************************************************************
     def withdraw(self, amount):
         # check if the amount is a valid number
@@ -208,28 +208,28 @@ class SavingsAccount(BankAccount):
         return True
 
     # ************************************************************************************
-    # Override the calculate_balance method for savings accounts.
+    # Override the calculate_balance method for savings accounts
     # Applies interest using the parent's method and adds a $10 reward if no withdrawals
-    # have occurred since the last calculation. Resets the withdrawal count afterward.
+    # have occurred since the last calculation. Resets the withdrawal count afterward
     # ************************************************************************************
     def calculate_balance(self, time):
         # Validate that time is a non-negative number
         if not isinstance(time, (int, float)) or time < 0:
             print("Invalid time period! Please enter a non-negative number.")
             return self.get_balance()
-        # Apply compound interest using the parent's calculation.
+        # Apply compound interest using the parent's calculation
         new_balance = super().calculate_balance(time)
-        # Add monthly reward if no withdrawals were made.
+        # Add monthly reward if no withdrawals were made
         if self.withdraw_count == 0:
             new_balance += 10
         self._BankAccount__balance = new_balance
         print(f"Balance after interest and reward: ${self.get_balance():.2f}")
-        # Reset the withdrawal counter after calculating the balance.
+        # Reset the withdrawal counter after calculating the balance
         self.withdraw_count = 0
         return self.get_balance()
 
     # ************************************************************************************
-    # Return a string representation of the SavingsAccount including minimum balance.
+    # Return a string representation of the SavingsAccount including minimum balance
     # ************************************************************************************
     def __str__(self):
         return (
@@ -239,47 +239,4 @@ class SavingsAccount(BankAccount):
             f"Balance: ${self.get_balance():.2f}\n"
             f"Minimum Balance: ${self.minimum_balance:.2f}"
         )
-
-# ****************************************************************************************
-# test script to validate functionality
-# ****************************************************************************************
-interest_rate = BankAccount.get_interest_rate()
-print(f"Default interest rate: {interest_rate:.2%}")
-
-# checking = CheckingAccount(123, "Alice", 1000)
-# print(checking)
-
-account = BankAccount(123, "Alice", 1000)
-print(account)
-print("-----------------------------")
-
-account_balance = account.get_balance()
-print(f"Account balance: {account_balance}")
-
-print("-----------------------------")
-time_period = 12
-print(f"The account balance is: {account.calculate_balance(time_period):.2f}")
-
-print("-----------------------------")
-# Create a BankAccount instance with an initial balance of $1000
-account = BankAccount("123456", "John Doe", 1000.00)
-
-# Test Case 1: Withdraw a valid amount (within balance)
-print(f"Initial Balance: ${account.get_balance():.2f}")
-account.withdraw(-200)  # Withdraw $200
-account.withdraw(200)  # Withdraw $200
-print(f"Balance after withdrawing $200: ${account.get_balance():.2f}")
-account.withdraw("two hundred")  # Withdraw $200
-
-# Test Case 2: Withdraw an amount larger than the balance
-account.withdraw(900)  # Try to withdraw $900, should print "Insufficient funds!"
-print(f"Balance after attempting to withdraw $900: ${account.get_balance():.2f}")
-
-# Test Case 3: Withdraw exactly the remaining balance
-account.withdraw(800)  # Withdraw exactly what's left
-print(f"Balance after withdrawing all funds: ${account.get_balance():.2f}")
-
-# Test Case 4: Withdraw from an empty account
-account.withdraw(50)  # Try to withdraw from zero balance
-
 
