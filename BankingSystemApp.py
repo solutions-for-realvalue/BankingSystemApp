@@ -250,6 +250,12 @@ def main():
     # Print the current interest rate for a bank account
     print("Current Bank Account Interest Rate:", f"{BankAccount.get_interest_rate() * 100:.2f}%\n")
     
+    # Create instances of CheckingAccount and SavingsAccount and print initial details
+    checking1 = CheckingAccount("0001", "Arni Savage", 1000000.00)
+    savings1 = SavingsAccount("1001", "Arni Savage", 500000.00)
+    print("Initial Checking Account Details:",checking1, "\n")
+    print("Initial Savings Account Details:",savings1, "\n")
+
     
 
 if __name__ == "__main__":
