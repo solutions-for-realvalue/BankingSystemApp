@@ -5,19 +5,20 @@
 class BankAccount:
 
     # ************************************************************************************
-    # class constant for the default interest rate (2% expressed as decimal)
+    # Class constant for the default interest rate (2% expressed as decimal)
     # ************************************************************************************
     INTEREST_RATE = 0.02
 
     # ************************************************************************************
-    # static method to return the default interest rate
+    # Static method to return the default interest rate
+    # This method is invokable without instantiating the class.
     # ************************************************************************************
     @staticmethod
     def get_interest_rate():
         return BankAccount.INTEREST_RATE
 
     # ************************************************************************************
-    # constructor to initialize the account number, account holder, and balance
+    # Constructor to initialize the account number, account holder, and balance
     # ************************************************************************************
     def __init__(self, account_number, account_holder, balance):
         # protected attributes using name mangling
@@ -26,7 +27,7 @@ class BankAccount:
         self.__balance = balance
 
     # ************************************************************************************
-    # accessor methods for the encapsulated attributes
+    # Accessor methods for the encapsulated attributes
     # ************************************************************************************
     def get_account_number(self):
         return self.__account_number
@@ -38,7 +39,8 @@ class BankAccount:
         return self.__balance
     
     # ************************************************************************************
-    # method calculates the balance (takes time as input parameter to calculate
+    # Method to calculate the balance after applying compound interest.
+    # 'time' is the input number period (months)
     #  the balance after applying compound interest)
     # ************************************************************************************
     def calculate_balance(self, time):
