@@ -293,6 +293,11 @@ def main():
     savings1.withdraw(450000)
     print(savings1, "\n")
 
+    # Calculate SavingsAccount balance after 2 months
+    print("Calculating balance for Savings Account after 2 months (interest applied, no bonus due to withdrawal)")
+    savings1.calculate_balance(2)
+    print(savings1, "\n")
+
 
 if __name__ == "__main__":
     main()
