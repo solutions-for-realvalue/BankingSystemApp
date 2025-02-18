@@ -94,6 +94,7 @@ class BankAccount:
     # ************************************************************************************
     def __str__(self):
         return (
+            f"Account Type: Bank Account\n"
             f"Account Number: {self.__account_number}\n"
             f"Account Holder: {self.__account_holder}\n"
             f"Balance: ${self.__balance:.2f}"
@@ -101,22 +102,56 @@ class BankAccount:
 
 
 # ****************************************************************************************
-# child class CheckingAccount
+# child class CheckingAccount for the parent BankAccount class
 # ****************************************************************************************
 class CheckingAccount(BankAccount):
-    # inherits all attributes and methods from the parent BankAccount class
     def __init__(self, account_number, account_holder, balance):
+        # Inherit all attributes from BankAccount
         super().__init__(account_number, account_holder, balance)
-        # additional attributes for the CheckingAccount class
+        # initialize overdraft limit
         self.overdraft_limit = 500
 
-    # method to override the withdraw method in the parent class
+    # ************************************************************************************
+    # Override the withdraw method to allow overdrafts up to the overdraft limit
+    # ************************************************************************************
     def withdraw(self, amount):
-        
+        # check if the amount is a valid number
+        if not isinstance(amount, (int, float)):
+            print("Invalid input! Please enter a valid number.")
+            return False
+        # check if the amount is positive
+        if amount <= 0:
+            print("Invalid amount! Please enter a positive value.")
+            return False
+        current_balance = self.get_balance()
+        # If the amount is within the available balance, proceed normally.
+        if amount <= current_balance:
+            self._BankAccount__balance -= amount
+            print(f"Withdrawal successful! New balance: ${self.get_balance():.2f}")
+            return True
+        # Otherwise, allow an overdraft if within the limit.
+        elif (amount - current_balance) <= self.overdraft_limit:
+            self._BankAccount__balance = current_balance - amount
+            print(f"Withdrawal successful with overdraft! New balance: ${self.get_balance():.2f}")
+            return True
+        else:
+            print(f"Error: Withdrawal exceeds overdraft limit. You can withdraw up to ${current_balance + self.overdraft_limit:.2f}.")
+            return False
+
+    # ************************************************************************************
+    # Override the calculate_balance method for checking accounts.
+    # Checking accounts do not earn interest, instead a monthly maintenance fee is subtracted.
+    # ************************************************************************************
+    def calculate_balance(self, time):
+        fee = 10 * time  # $10 maintenance fee per month
+        self._BankAccount__balance = self.get_balance() - fee
+        return self.get_balance()
+
+
 
 
 # ****************************************************************************************
-# child class SavingsAccount
+# child class SavingsAccount for the parent BankAccount class
 # ****************************************************************************************
 class SavingsAccount(BankAccount):
     # inherits all attributes and methods from the parent BankAccount class
