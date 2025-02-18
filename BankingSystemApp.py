@@ -214,6 +214,18 @@ class SavingsAccount(BankAccount):
         self.withdraw_count = 0
         return self.get_balance()
 
+    # ************************************************************************************
+    # Return a string representation of the SavingsAccount including minimum balance.
+    # ************************************************************************************
+    def __str__(self):
+        return (
+            f"SavingsAccount\n"
+            f"Account Number: {self.get_account_number()}\n"
+            f"Account Holder: {self.get_account_holder()}\n"
+            f"Balance: ${self.get_balance():.2f}\n"
+            f"Minimum Balance: ${self.minimum_balance:.2f}"
+        )
+
 # ****************************************************************************************
 # test script to validate functionality
 # ****************************************************************************************
