@@ -45,6 +45,18 @@ class SavingsAccount(BankAccount):
         self.interest_rate = 0.04
 
 
+interest_rate = BankAccount.get_interest_rate()
+print(f"Default interest rate: {interest_rate:.2%}")
+
+# checking = CheckingAccount(123, "Alice", 1000)
+# print(checking)
+
+account = BankAccount(123, "Alice", 1000)
+account_balance = account.get_balance()
+print(f"Account balance: {account_balance}")
+
+time_period = 12
+print(f"The account balance after {time_period} years is: {account.calculate_balance(time_period)}")
 
 
 
