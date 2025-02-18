@@ -117,3 +117,41 @@ print(savings_acc)
 
 ---
 
+## 📌 Class Structure  
+
+### **BankAccount (Parent Class)**  
+✅ **Attributes:**  
+- `INTEREST_RATE` (2%) - Constant interest rate for all accounts  
+- `account_number` - Unique identifier for the account  
+- `account_holder` - Name of the account holder  
+- `balance` - Current account balance  
+
+✅ **Methods:**  
+- `get_interest_rate()` - Returns the interest rate  
+- `calculate_balance(time)` - Updates balance based on interest over time  
+- `deposit(amount)` - Adds funds to the account  
+- `withdraw(amount)` - Removes funds if sufficient balance is available  
+
+---
+
+### **CheckingAccount (Child Class)**  
+✅ **Additional Attributes:**  
+- `overdraft_limit` (Default: $500)  
+
+✅ **Overridden Methods:**  
+- `withdraw()` - Allows overdrafts up to a limit  
+- `calculate_balance()` - Deducts a **$10 maintenance fee** per month  
+
+---
+
+### **SavingsAccount (Child Class)**  
+✅ **Additional Attributes:**  
+- `minimum_balance` (Default: $100)  
+- `withdrawal_count` - Tracks number of withdrawals  
+
+✅ **Overridden Methods:**  
+- `withdraw()` - Prevents withdrawals below the minimum balance  
+- `calculate_balance()` - Applies interest and a **$10 reward** if no withdrawals occurred  
+
+---
+
