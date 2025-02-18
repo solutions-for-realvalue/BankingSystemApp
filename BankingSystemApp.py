@@ -298,6 +298,10 @@ def main():
     savings1.calculate_balance(2)
     print(savings1, "\n")
 
+    # For SavingsAccount, test bonus reward when no withdrawal occurs
+    print("Calculating balance for Savings Account after 1 month with no withdrawals (bonus reward should be added)")
+    savings1.calculate_balance(1)
+    print(savings1, "\n")
 
 if __name__ == "__main__":
     main()
