@@ -32,6 +32,19 @@ class BankAccount:
         self.__balance = self.__balance * ((1 + BankAccount.INTEREST_RATE) ** time)
         return self.__balance
 
+    # method adds the specified amount to the account balance
+    def deposit(self, amount):
+        self.__balance += amount
+
+    # method for withdrawals that subtracts the specified amount from the account
+    # balance if sufficient funds are available
+    def withdraw(self, amount):
+        if amount <= self.__balance:
+            self.__balance -= amount
+        else:
+            print("Insufficient funds!")
+
+
 # child class
 class CheckingAccount(BankAccount):
     def __init__(self, account_number, account_holder, balance):
@@ -43,6 +56,8 @@ class SavingsAccount(BankAccount):
     def __init__(self, account_number, account_holder, balance):
         super().__init__(account_number, account_holder, balance)
         self.interest_rate = 0.04
+
+
 
 
 interest_rate = BankAccount.get_interest_rate()
@@ -57,7 +72,6 @@ print(f"Account balance: {account_balance}")
 
 time_period = 12
 print(f"The account balance after {time_period} years is: {account.calculate_balance(time_period)}")
-
 
 
 
