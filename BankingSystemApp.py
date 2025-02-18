@@ -51,8 +51,13 @@ class BankAccount:
     # method adds the specified amount to the account balance
     # ************************************************************************************
     def deposit(self, amount):
+        # check if the amount is a valid number
+        if not isinstance(amount, (int, float)):
+            print("Invalid input! Please enter a valid number.")
+        # check if the amount is positive
         if amount > 0:
             self.__balance += amount
+        # print error message if the amount is not positive
         else:
             print("Invalid amount! Please enter a positive value.")
 
@@ -62,13 +67,20 @@ class BankAccount:
     # balance if sufficient funds are available
     # ************************************************************************************
     def withdraw(self, amount):
+        # check if the amount is a valid number
+        if not isinstance(amount, (int, float)):
+            print("Invalid input! Please enter a valid number.")
+        # check if the amount is positive
         if amount <= 0:
             print("Invalid amount! Please enter a positive value.")
+        # check if the amount exceeds the balance
         elif amount > self.__balance:
             print(f"Insufficient funds! You can withdraw up to ${self.__balance:.2f}.")
+        # subtract the amount from the balance if sufficient funds are available
         else:
             self.__balance -= amount
             print(f"Withdrawal successful! New balance: ${self.__balance:.2f}")
+
 
     # ************************************************************************************
     # method to return Bank Account details
