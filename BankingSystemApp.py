@@ -32,6 +32,20 @@ class BankAccount:
         self.__balance = self.__balance * ((1 + BankAccount.INTEREST_RATE) ** time)
         return self.__balance
 
+# child class
+class CheckingAccount(BankAccount):
+    def __init__(self, account_number, account_holder, balance):
+        super().__init__(account_number, account_holder, balance)
+        self.overdraft_limit = 500
+
+# child class 
+class SavingsAccount(BankAccount):
+    def __init__(self, account_number, account_holder, balance):
+        super().__init__(account_number, account_holder, balance)
+        self.interest_rate = 0.04
+
+
+
 
 
 
