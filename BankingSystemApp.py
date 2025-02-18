@@ -265,10 +265,22 @@ def main():
     savings1.deposit(50000)
     print(savings1, "\n")
 
-
-
-
+    # Perform Withdrawals on CheckingAccount
+    print("Withdrawing $200,000 from Checking Account")
+    checking1.withdraw(200000)
+    print(checking1, "\n")
     
+    # Now, checking1 balance should be = $900,000
+    print("Withdrawing $900,400 from Checking Account")
+    checking1.withdraw(900400)
+    print(checking1, "\n")
+    
+    print("Attempting to withdraw $300 from Checking Account")
+    checking1.withdraw(300)
+    print(checking1, "\n")
+
+
+
 
 if __name__ == "__main__":
     main()
