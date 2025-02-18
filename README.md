@@ -155,3 +155,22 @@ print(savings_acc)
 
 ---
 
+## 🛠️ Testing  
+
+A **test script** is included to verify that all features work correctly. The test script:  
+
+✅ Prints the **current interest rate**  
+✅ Creates **Checking & Savings Accounts**  
+✅ Tests **deposits and withdrawals**  
+✅ Ensures **withdrawal rules are enforced**  
+✅ Applies **interest & fees correctly**  
+✅ Displays **account details after each transaction**  
+
+To run the tests:
+
+```bash
+python test_banking.py
+```
+
+---
+
