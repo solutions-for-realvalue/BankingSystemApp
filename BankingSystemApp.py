@@ -82,7 +82,7 @@ class BankAccount:
 
 
 # ****************************************************************************************
-# child class
+# child class CheckingAccount
 # ****************************************************************************************
 class CheckingAccount(BankAccount):
     def __init__(self, account_number, account_holder, balance):
@@ -91,7 +91,7 @@ class CheckingAccount(BankAccount):
 
 
 # ****************************************************************************************
-# child class
+# child class SavingsAccount
 # ****************************************************************************************
 class SavingsAccount(BankAccount):
     def __init__(self, account_number, account_holder, balance):
