@@ -174,3 +174,27 @@ python test_banking.py
 
 ---
 
+## 🤝 Contributing  
+
+Contributions are welcome! Follow these steps:  
+
+1️⃣ **Fork the repository**  
+2️⃣ **Create a feature branch**  
+3️⃣ **Commit your changes**  
+4️⃣ **Push your branch**  
+5️⃣ **Open a pull request**  
+
+---
+
+## 📜 License  
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.  
+
+---
+
+## 📧 Contact  
+
+For any questions about this project, please contact me via:  
+
+- **Email:** [natureuplift@protonmail.com](mailto:natureuplift@protonmail.com)  
+- **LinkedIn:** [Arnaldo Sepulveda](https://www.linkedin.com/in/arnaldo-sepulveda)
