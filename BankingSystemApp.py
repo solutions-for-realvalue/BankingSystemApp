@@ -50,6 +50,9 @@ class BankAccount:
             self.__balance -= amount
             print(f"Withdrawal successful! New balance: ${self.__balance:.2f}")
 
+    # method to return a string representation of the object
+    def __str__(self):
+        return f"Account Number: {self.__account_number}\nAccount Holder: {self.__account_holder}\nBalance: ${self.__balance:.2f}"
 
 # child class
 class CheckingAccount(BankAccount):
@@ -77,7 +80,7 @@ account_balance = account.get_balance()
 print(f"Account balance: {account_balance}")
 
 time_period = 12
-print(f"The account balance after {time_period} years is: {account.calculate_balance(time_period)}")
+print(f"The account balance after {time_period} years is: {account.calculate_balance(time_period):.2f}")
 
 
 print("-----------------------------")
