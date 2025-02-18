@@ -1,3 +1,4 @@
+# ****************************************************************************************
 # Banking System Application that consist of parent class
 # Banking System with two child classes CheckingAccount and SavingsAccount
 class BankAccount:
@@ -50,16 +51,24 @@ class BankAccount:
             self.__balance -= amount
             print(f"Withdrawal successful! New balance: ${self.__balance:.2f}")
 
-    # method to return a string representation of the object
+    # method to return Bank Account details
     def __str__(self):
-        return f"Account Number: {self.__account_number}\nAccount Holder: {self.__account_holder}\nBalance: ${self.__balance:.2f}"
+        return (
+            f"Account Number: {self.__account_number}\n"
+            f"Account Holder: {self.__account_holder}\n"
+            f"Balance: ${self.__balance:.2f}"
+        )
 
+
+# ****************************************************************************************
 # child class
 class CheckingAccount(BankAccount):
     def __init__(self, account_number, account_holder, balance):
         super().__init__(account_number, account_holder, balance)
         self.overdraft_limit = 500
 
+
+# ****************************************************************************************
 # child class 
 class SavingsAccount(BankAccount):
     def __init__(self, account_number, account_holder, balance):
@@ -67,8 +76,8 @@ class SavingsAccount(BankAccount):
         self.interest_rate = 0.04
 
 
-
-
+# ****************************************************************************************
+# test script to validate functionality
 interest_rate = BankAccount.get_interest_rate()
 print(f"Default interest rate: {interest_rate:.2%}")
 
@@ -76,15 +85,17 @@ print(f"Default interest rate: {interest_rate:.2%}")
 # print(checking)
 
 account = BankAccount(123, "Alice", 1000)
+print(account)
+print("-----------------------------")
+
 account_balance = account.get_balance()
 print(f"Account balance: {account_balance}")
 
+print("-----------------------------")
 time_period = 12
-print(f"The account balance after {time_period} years is: {account.calculate_balance(time_period):.2f}")
-
+print(f"The account balance is: {account.calculate_balance(time_period):.2f}")
 
 print("-----------------------------")
-
 # Create a BankAccount instance with an initial balance of $1000
 account = BankAccount("123456", "John Doe", 1000.00)
 
