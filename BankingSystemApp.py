@@ -145,6 +145,11 @@ class CheckingAccount(BankAccount):
     # Checking accounts do not earn interest, instead a monthly maintenance fee is subtracted.
     # ************************************************************************************
     def calculate_balance(self, time):
+        # Validate that time is a non-negative number
+        if not isinstance(time, (int, float)) or time < 0:
+            print("Invalid time period! Please enter a non-negative number.")
+            # return the balance without any changes
+            return self.get_balance()
         # calculate monthly maintenance fee
         fee = 10 * time
         # subtract the fee from the balance
@@ -153,7 +158,7 @@ class CheckingAccount(BankAccount):
         return self.get_balance()
 
     # ************************************************************************************
-    # method to return Checking Account details (override parent class method)
+    # Method to return Checking Account details (override parent class method)
     # ************************************************************************************
     def __str__(self):
         return (
